@@ -6,19 +6,19 @@ class FenwickTree:
         self.tree = [0] * n
         self.func = func
 
-    def bit_range(self, pos: int, down: bool = True):
+    def tree_range(self, pos: int, down: bool = True):
         while pos >= 0 and pos < len(self.tree):
             yield pos
             pos = (pos & (pos + 1)) - 1 if down else pos | (pos + 1)
 
     def query(self, pos: int, initial_val: int):
         ans = initial_val
-        for i in self.bit_range(pos):
+        for i in self.tree_range(pos):
             ans = self.func(ans, self.tree[i])
         return ans
 
     def update(self, pos: int, val: int):
-        for i in self.bit_range(pos, False):
+        for i in self.tree_range(pos, False):
             self.tree[i] = self.func(self.tree[i], val)
 
 
