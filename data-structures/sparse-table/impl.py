@@ -30,7 +30,7 @@ class SparseTable:
         
         return st
 
-    def range_min_query(self, start_at, end_at):
+    def range_min_query(self, start_at: int, end_at: int):
         j = self.log[end_at - start_at + 1]
         return min(self.sparse_table[start_at][j], self.sparse_table[end_at - (1 << j) + 1][j])
     
