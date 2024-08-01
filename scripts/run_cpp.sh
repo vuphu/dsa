@@ -5,7 +5,7 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-EXECUTABLE="impl"
+EXECUTABLE="exec"
 SOURCE_FILE="$1/impl.cpp"
 
 g++ -o $EXECUTABLE $SOURCE_FILE
