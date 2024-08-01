@@ -8,6 +8,7 @@ class TrieNode:
         self.is_end = False
 
 
+# noinspection PyShadowingNames
 class Trie:
     def __init__(self):
         self.root = TrieNode()

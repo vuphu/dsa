@@ -2,6 +2,7 @@ import math
 from typing import List
 
 
+# noinspection PyShadowingNames
 class SegmentTree:
     def __init__(self, nums: List[int]):
         self.n = len(nums)

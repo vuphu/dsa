@@ -7,7 +7,7 @@ class FenwickTree:
         self.func = func
 
     def tree_range(self, pos: int, down: bool = True):
-        while pos >= 0 and pos < len(self.tree):
+        while 0 <= pos < len(self.tree):
             yield pos
             pos = (pos & (pos + 1)) - 1 if down else pos | (pos + 1)
 
