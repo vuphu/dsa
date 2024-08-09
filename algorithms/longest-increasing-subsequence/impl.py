@@ -18,13 +18,13 @@ def longest_subsequence(nums: List[int]) -> int:
 
 
 def fast_longest_subsequence(nums: List[int]) -> int:
-    ans = []
+    stack = []
     for num in nums:
-        if not ans or ans[-1] <= num:
-            ans.append(num)
+        if not stack or stack[-1] <= num:
+            stack.append(num)
         else:
-            ans[bisect.bisect_right(ans, num)] = num
-    return len(ans)
+            stack[bisect.bisect_right(stack, num)] = num
+    return len(stack)
 
 
 if __name__ == "__main__":
