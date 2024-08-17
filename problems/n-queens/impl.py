@@ -2,7 +2,7 @@ from copy import deepcopy
 from typing import List
 
 
-def print_borad(board: List[List[int]]):
+def print_board(board: List[List[int]]):
     for row in board:
         print(row)
     print()
@@ -47,4 +47,4 @@ def solve_n_queens(n: int) -> List[List[List[str]]]:
 if __name__ == "__main__":
     boards = solve_n_queens(4)
     for board in boards:
-        print_borad(board)
+        print_board(board)
