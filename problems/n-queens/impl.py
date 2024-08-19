@@ -28,17 +28,17 @@ def solve_n_queens(n: int) -> List[List[List[str]]]:
 
     ans = []
 
-    def attemp(r: int) -> None:
+    def attempt(r: int) -> None:
         if r == n:
             ans.append(deepcopy(board))
             return
         for c in range(n):
             if board[r][c] == dot_symbol and can_put_queen(r, c):
                 board[r][c] = queen_symbol
-                attemp(r + 1)
+                attempt(r + 1)
                 board[r][c] = dot_symbol
 
-    attemp(0)
+    attempt(0)
     return ans
 
 
