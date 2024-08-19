@@ -19,16 +19,18 @@ def knight_tour(n: int) -> List[List[List[str]]]:
         if step == n * n:
             ans.append(deepcopy(board))
             return
-        board[x][y] = step
         for dx, dy in knight_moves:
             next_x, next_y = x + dx, y + dy
             if (0 <= next_x < n) and (0 <= next_y < n) and board[next_x][next_y] == 0:
+                board[next_x][next_y] = step + 1
                 attempt(step + 1, next_x, next_y)
-        board[x][y] = 0
+                board[next_x][next_y] = 0
 
-    for i in range(n):
-        for j in range(n):
-            attempt(1, i, j)
+    for x in range(n):
+        for y in range(n):
+            board[x][y] = 1
+            attempt(1, x, y)
+            board[x][y] = 0
 
     return ans
 
