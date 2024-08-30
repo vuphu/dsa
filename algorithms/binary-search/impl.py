@@ -1,2 +1,23 @@
+from typing import List
+
+
+# nums is already sorted
+def binary_search(nums: List[int], target: int) -> bool:
+    left, right = 0, len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return True
+        elif nums[mid] > target:
+            right = mid - 1
+        else:
+            left = mid + 1
+
+    return False
+
+
 if __name__ == "__main__":
-    pass
+    nums = [1, 2, 4, 8, 16, 32, 64, 128]
+    print(binary_search(nums, 32))
+    print(binary_search(nums, 31))
