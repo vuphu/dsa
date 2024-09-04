@@ -13,6 +13,8 @@ def dijkstra(n: int, graph: dict, node: int) -> List[float]:
 
     while heap:
         d, u = heapq.heappop(heap)
+        if dist[u] < d:
+            continue
         for v, w in graph[u]:
             if d + w < dist[v]:
                 dist[v] = d + w
