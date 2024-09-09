@@ -19,5 +19,6 @@ def binary_search(nums: List[int], target: int) -> bool:
 
 if __name__ == "__main__":
     nums = [1, 2, 4, 8, 16, 32, 64, 128]
-    print(binary_search(nums, 32))
-    print(binary_search(nums, 31))
+
+    assert binary_search(nums, 32) == True
+    assert binary_search(nums, 31) == False

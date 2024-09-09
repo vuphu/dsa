@@ -41,9 +41,10 @@ class Trie:
 
 if __name__ == "__main__":
     words = ["dsa", "python", "data-structure", "trie", "impl"]
-    trie = Trie()
 
+    trie = Trie()
     trie.build(words)
-    print(trie.exists("python"))
-    print(trie.exists("algorithm"))
-    print(trie.starts_with("imp"))
+
+    assert trie.exists("python") == True
+    assert trie.exists("algorithm") == False
+    assert trie.starts_with("imp") == True

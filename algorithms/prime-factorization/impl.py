@@ -32,5 +32,5 @@ def factorize_with_sieve(num: int) -> List[int]:
         
 
 if __name__ == "__main__":
-    print(factorize(120))
-    print(factorize_with_sieve(120))
+    assert factorize(120) == [2, 2, 2, 3, 5]
+    assert factorize_with_sieve(120) == [2, 2, 2, 3, 5]

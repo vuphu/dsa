@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <cassert>
 
 class TrieNode {
 public:
@@ -64,12 +65,13 @@ public:
 
 int main() {
   std::vector<std::string> words = {"dsa", "python", "data-structure", "trie", "impl"};
-  Trie *trie = new Trie();
 
+  Trie *trie = new Trie();
   trie->build(words);
-  std::cout << std::boolalpha << trie->exists("python") << std::endl;
-  std::cout << std::boolalpha << trie->exists("algorithm") << std::endl;
-  std::cout << std::boolalpha << trie->starts_with("imp") << std::endl;
+
+  assert(trie->exists("python") == true);
+  assert(trie->exists("algorithm") == false);
+  assert(trie->exists("impl") == true);
 
   return 0;
 }

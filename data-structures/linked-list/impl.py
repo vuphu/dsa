@@ -49,11 +49,11 @@ def reverse_without_recursion(head: Optional[ListNode]) -> Optional[ListNode]:
     return node
 
 if __name__ == "__main__":
-    head = build([1, 2, 3, 4, 5])
-    print(to_list(head))
+    nums = [1, 2, 3, 4, 5]
+    head = build(nums)
 
     reversed_head = reverse(head)
-    print(to_list(reversed_head))
+    assert to_list(reversed_head) == nums[::-1]
     
     reversed_reversed_head = reverse_without_recursion(reversed_head)
-    print(to_list(reversed_reversed_head))
+    assert to_list(reversed_reversed_head) == nums

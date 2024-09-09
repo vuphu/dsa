@@ -11,6 +11,8 @@ def sieve(n: int) -> List[int]:
         p += 1
     return [i for i in range(2, n + 1) if primes[i]]
 
+
 if __name__ == "__main__":
     nums = sieve(1000)
-    print(nums)
+
+    assert len(nums) == 168

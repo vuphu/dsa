@@ -43,6 +43,6 @@ if __name__ == "__main__":
     nums = [1, 3, 2, 7, 9, 11, 3, 5, 6, 4, 8]
     segment_tree= SegmentTree(nums)
     
-    print(segment_tree.range_min_query(0, 5))
+    assert segment_tree.range_min_query(0, 5) == 1
     segment_tree.update(0, 10)
-    print(segment_tree.range_min_query(0, 5))
+    assert segment_tree.range_min_query(0, 5) == 2

@@ -33,4 +33,4 @@ if __name__ == "__main__":
         graph[v].append((u, w))
 
     dist = dijkstra(n, graph, 0)
-    print(dist[3])
+    assert dist == [0, 3, 4, 5]

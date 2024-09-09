@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>
 
 int fast_power(int base, int power, int mod = 1000000007) {
     if (power == 0) {
@@ -15,7 +16,8 @@ int fast_power(int base, int power, int mod = 1000000007) {
 }
 
 int main() {
-    std::cout << fast_power(2, 3) << std::endl;
-    std::cout << fast_power(256, 1024) << std::endl;
+    assert(fast_power(2, 3) == 8);
+    assert(fast_power(256, 1024) == 112754241);
+
     return 0;
 }

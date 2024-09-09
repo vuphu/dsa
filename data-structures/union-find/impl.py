@@ -18,4 +18,5 @@ if __name__ == "__main__":
     union_find.unite(1, 2)
     union_find.unite(1, 3)
     union_find.unite(2, 4)
-    print(union_find.find_parent(3) == union_find.find_parent(4))
+
+    assert union_find.find_parent(3) == union_find.find_parent(4)

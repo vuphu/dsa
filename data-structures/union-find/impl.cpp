@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 class UnionFind {
 public:
@@ -34,6 +35,8 @@ int main() {
     union_find.unite(1, 2);
     union_find.unite(1, 3);
     union_find.unite(2, 4);
-    std::cout << std::boolalpha << (union_find.find_parent(3) == union_find.find_parent(4)) << std::endl;
+
+    assert(union_find.find_parent(3) == union_find.find_parent(4));
+
     return 0;
 }

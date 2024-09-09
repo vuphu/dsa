@@ -10,5 +10,5 @@ def fast_power(base: int, power: int, mod: int = 10**9+7) -> int:
     return ans
 
 if __name__ == "__main__":
-    print(fast_power(2, 3))
-    print(fast_power(256, 1024))
+    assert fast_power(2,3) == 8
+    assert fast_power(256, 1024) == 112754241

@@ -26,4 +26,4 @@ if __name__ == "__main__":
     fenwick_tree = FenwickTree(10, lambda x, y: x + y)
     fenwick_tree.update(0, 5)
     fenwick_tree.update(1, 3)
-    print(fenwick_tree.query(1, 0))
+    assert fenwick_tree.query(1, 0) == 8
