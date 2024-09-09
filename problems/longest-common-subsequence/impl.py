@@ -34,5 +34,5 @@ if __name__ == "__main__":
     s1 = 'Longest common subsequence'
     s2 = 'common'
 
-    print(lcs(s1, s2))
-    print(lcs_memorization(s1, s2))
+    assert lcs(s1, s2) == 6
+    assert lcs_memorization(s1, s2) == 6

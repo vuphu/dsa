@@ -29,5 +29,6 @@ def fast_longest_subsequence(nums: List[int]) -> int:
 
 if __name__ == "__main__":
     nums = [10, 9, 2, 5, 3, 7, 101, 18]
-    print(longest_subsequence(nums))
-    print(fast_longest_subsequence(nums))
+
+    assert longest_subsequence(nums) == 4
+    assert fast_longest_subsequence(nums) == 4

@@ -8,7 +8,7 @@ fi
 EXECUTABLE="exec"
 SOURCE_FILE="$1/impl.cpp"
 
-g++ -o $EXECUTABLE $SOURCE_FILE
+g++ -std=c++20 -o $EXECUTABLE $SOURCE_FILE
 
 if [ $? -eq 0 ]; then
     ./$EXECUTABLE
