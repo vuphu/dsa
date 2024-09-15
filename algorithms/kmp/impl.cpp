@@ -24,7 +24,7 @@ std::vector<int> compute_prefix_function(const std::string &pattern) {
 std::vector<int> kmp_search(const std::string &text, const std::string &pattern) {
     int m = pattern.length(), n = text.length();
     std::vector<int> prefix = compute_prefix_function(pattern);
-    std::vector<int> found_indices;
+    std::vector<int> match_indices;
 
     int j = 0;
     for (int i = 0; i < n; i++) {
@@ -35,12 +35,12 @@ std::vector<int> kmp_search(const std::string &text, const std::string &pattern)
             j++;
         }
         if (j == m) {
-            found_indices.push_back(i - m + 1);
+            match_indices.push_back(i - m + 1);
             j = prefix[j - 1];
         }
     }
 
-    return found_indices;
+    return match_indices;
 }
 
 int main() {

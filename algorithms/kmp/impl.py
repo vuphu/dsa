@@ -19,7 +19,7 @@ def compute_prefix_function(pattern: str) -> List[int]:
 def kmp_search(text: str, pattern: str) -> List[int]:
     m, n = len(pattern), len(text)
     prefix = compute_prefix_function(pattern)
-    found_indices = []
+    match_indices = []
 
     j = 0
     for i in range(n):
@@ -28,10 +28,10 @@ def kmp_search(text: str, pattern: str) -> List[int]:
         if text[i] == pattern[j]:
             j += 1
         if j == m:
-            found_indices.append(i - m + 1)
+            match_indices.append(i - m + 1)
             j = prefix[j - 1]
 
-    return found_indices
+    return match_indices
 
 
 if __name__ == "__main__":
