@@ -20,10 +20,10 @@ def longest_subsequence(nums: List[int]) -> int:
 def fast_longest_subsequence(nums: List[int]) -> int:
     stack = []
     for num in nums:
-        if not stack or stack[-1] <= num:
+        if not stack or stack[-1] < num:
             stack.append(num)
         else:
-            stack[bisect.bisect_right(stack, num)] = num
+            stack[bisect.bisect_left(stack, num)] = num
     return len(stack)
 
 

@@ -25,7 +25,7 @@ int longest_subsequence(const std::vector<int>& nums) {
 int fast_longest_subsequence(const std::vector<int>& nums) {
     std::vector<int> stack;
     for (int num : nums) {
-        auto it = upper_bound(stack.begin(), stack.end(), num);
+        auto it = std::lower_bound(stack.begin(), stack.end(), num);
         if (it == stack.end()) {
             stack.push_back(num);
         } else {
