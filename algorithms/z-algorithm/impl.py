@@ -2,7 +2,7 @@ from typing import List
 
 # Ref: https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/
 
-def compute_z_array(s):
+def compute_z_array(s: str):
     length = len(s)
     z_array = [0] * length
     left, right = 0, 0
