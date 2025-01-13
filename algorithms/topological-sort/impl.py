@@ -4,11 +4,11 @@ from typing import List
 
 def topological_sort(n: int, edges: List[List[int]]) -> List[int]:
     graph = collections.defaultdict(list)
-    for u, v in edges:
-        graph[u].append(v)
-
     visited = [False] * n
     stack = []
+
+    for u, v in edges:
+        graph[u].append(v)
 
     def dfs(node):
         visited[node] = True
