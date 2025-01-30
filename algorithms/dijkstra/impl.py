@@ -4,7 +4,6 @@ import math
 from typing import List
 
 
-# noinspection PyShadowingNames
 def dijkstra(n: int, graph: dict, node: int) -> List[float]:
     dist = [math.inf] * n
     dist[node] = 0
