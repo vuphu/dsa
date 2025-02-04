@@ -19,7 +19,7 @@ std::vector<Board> knight_tour(int n) {
     Board board(n, std::vector<int>(n, 0));
     std::vector<Board> ans;
 
-    auto attempt = [&](auto &&self, int step, int x, int y) -> void {
+    std::function<void(int,int,int)> attempt = [&](int step, int x, int y) -> void {
         if (step == n * n) {
             ans.push_back(board);
             return;
@@ -29,7 +29,7 @@ std::vector<Board> knight_tour(int n) {
             int next_y = y + dy;
             if (next_x >= 0 && next_x < n && next_y >= 0 && next_y < n && board[next_x][next_y] == 0) {
                 board[next_x][next_y] = step + 1;
-                self(self, step + 1, next_x, next_y);
+                attempt(step + 1, next_x, next_y);
                 board[next_x][next_y] = 0;
             }
         }
@@ -38,7 +38,7 @@ std::vector<Board> knight_tour(int n) {
     for (int x = 0; x < n; x++) {
         for (int y = 0; y < n; y++) {
             board[x][y] = 1;
-            attempt(attempt, 1, x, y);
+            attempt(1, x, y);
             board[x][y] = 0;
         }
     }
@@ -48,10 +48,10 @@ std::vector<Board> knight_tour(int n) {
 
 int main() {
     int n = 5;
-    std::vector<Board> boards = knight_tour(n);
+    auto boards = knight_tour(n);
     std::cout << "Found " << boards.size() << " solutions" << std::endl;
     if (!boards.empty()) {
-        print_board(boards[0]);
+        print_board(boards.front());
     }
     return 0;
 }
