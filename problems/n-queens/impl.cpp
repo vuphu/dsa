@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 
-typedef std::vector<std::vector<char>> Board;
+typedef std::vector<std::vector<bool>> Board;
 
 void print_board(const Board &board) {
     for (const auto &row : board) {
-        for (char cell : row) {
-            std::cout << cell << " ";
+        for (auto cell : row) {
+            std::cout << (cell ? "Q" : ".") << " ";
         }
         std::cout << std::endl;
     }
@@ -14,38 +14,36 @@ void print_board(const Board &board) {
 }
 
 std::vector<Board> solve_n_queens(int n) {
-    Board board(n, std::vector<char>(n, '.'));
+    Board board(n, std::vector<bool>(n, false));
     std::vector<Board> ans;
 
-    auto is_inside_board = [&](int r, int c) {
-        return r >= 0 && r < n && c >= 0 && c < n;
+    auto has_queen = [&](int r, int c) -> bool {
+        if (r < 0 || r >= n || c < 0 || c >= n) {
+            return false;
+        }
+        return board[r][c];
     };
 
-    auto can_put_queen = [&](const Board &board, int r, int c) {
-        static const std::vector<std::pair<int, int>> steps = {
-            {-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
-        for (const auto & [ dx, dy ] : steps) {
-            int k = 1;
-            while (is_inside_board(r + k * dx, c + k * dy)) {
-                if (board[r + k * dx][c + k * dy] == 'Q') {
-                    return false;
-                }
-                k++;
+    auto is_safe = [&](const Board &board, int r, int c) -> bool {
+        for (int i = r - 1; i >= 0; i--) {
+            int step = r - i;
+            if (has_queen(i, c) || has_queen(i, c - step) || has_queen(i, c + step)) {
+                return false;
             }
         }
         return true;
     };
 
-    std::function<void(int)> attempt = [&](int r) -> void {
-        if (r == n) {
+    std::function<void(int)> attempt = [&](int row) -> void {
+        if (row == n) {
             ans.push_back(board);
             return;
         }
-        for (int c = 0; c < n; c++) {
-            if (board[r][c] == '.' && can_put_queen(board, r, c)) {
-                board[r][c] = 'Q';
-                attempt(r + 1);
-                board[r][c] = '.';
+        for (int col = 0; col < n; col++) {
+            if (is_safe(board, row, col)) {
+                board[row][col] = true;
+                attempt(row + 1);
+                board[row][col] = false;
             }
         }
     };
