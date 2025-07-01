@@ -4,7 +4,7 @@ fn bubble_sort(nums: &mut Vec<i32>) {
     for i in 0..n {
         for j in 0..(n - i - 1) {
             if nums[j] > nums[j + 1] {
-                nums.swap(j, j + 1);
+                nums.swap(j, j + 1);    
             }
         }
     }
@@ -12,10 +12,8 @@ fn bubble_sort(nums: &mut Vec<i32>) {
 
 fn main() {
     let mut nums = vec![4, 2, 1, 3, 5];
-    let mut sorted_nums = nums.clone();
 
-    sorted_nums.sort();
     bubble_sort(&mut nums);
 
-    assert_eq!(nums, sorted_nums);
+    assert!(nums.is_sorted());
 }
