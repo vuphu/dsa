@@ -8,6 +8,7 @@ fi
 EXECUTABLE="exec"
 SOURCE_FILE="$1/impl.rs"
 
+rustfmt $SOURCE_FILE
 rustc -o $EXECUTABLE $SOURCE_FILE
 
 if [ $? -eq 0 ]; then
