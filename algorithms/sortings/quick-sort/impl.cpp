@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <cassert>
+#include <functional>
 
 int partition(std::vector<int> &nums, int low, int high) {
     int pivot = nums[high];
@@ -19,14 +20,14 @@ int partition(std::vector<int> &nums, int low, int high) {
 }
 
 std::vector<int> quick_sort(std::vector<int> &nums) {
-    auto handler = [&](auto &&self, int low, int high) -> void {
+    std::function<void(int, int)> handler = [&](int low, int high) -> void {
         if (low < high) {
             int pivot_index = partition(nums, low, high);
-            self(self, low, pivot_index - 1);
-            self(self, pivot_index + 1, high);
+            handler(low, pivot_index - 1);
+            handler(pivot_index + 1, high);
         }
     };
-    handler(handler, 0, nums.size() - 1);
+    handler(0, nums.size() - 1);
     return nums;
 }
 

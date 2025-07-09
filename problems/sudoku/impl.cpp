@@ -2,6 +2,7 @@
 #include <utility>
 #include <vector>
 #include <cmath>
+#include <functional>
 
 typedef std::vector<std::vector<int>> Board;
 

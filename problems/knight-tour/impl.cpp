@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <functional>
 
 typedef std::vector<std::vector<int>> Board;
 
