@@ -69,9 +69,9 @@ int main() {
   Trie *trie = new Trie();
   trie->build(words);
 
-  assert(trie->exists("python") == true);
-  assert(trie->exists("algorithm") == false);
-  assert(trie->exists("impl") == true);
+  assert(trie->exists("python"));
+  assert(!trie->exists("algorithm"));
+  assert(trie->exists("impl"));
 
   return 0;
 }

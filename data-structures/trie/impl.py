@@ -44,6 +44,6 @@ if __name__ == "__main__":
     trie = Trie()
     trie.build(words)
 
-    assert trie.exists("python") == True
-    assert trie.exists("algorithm") == False
-    assert trie.starts_with("imp") == True
+    assert trie.exists("python")
+    assert not trie.exists("algorithm")
+    assert trie.starts_with("imp")

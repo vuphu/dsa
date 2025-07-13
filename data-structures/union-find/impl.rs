@@ -3,20 +3,20 @@ struct UnionFind {
 }
 
 impl UnionFind {
-    fn new(n: usize) -> Self {
+    pub fn new(n: usize) -> Self {
         Self {
             parents: (0..n).collect::<Vec<_>>(),
         }
     }
 
-    fn find_parent(&mut self, u: usize) -> usize {
+    pub fn find_parent(&mut self, u: usize) -> usize {
         if self.parents[u] != u {
             self.parents[u] = self.find_parent(self.parents[u]);
         }
         return self.parents[u];
     }
 
-    fn unite(&mut self, u: usize, v: usize) {
+    pub fn unite(&mut self, u: usize, v: usize) {
         let pu = self.find_parent(u);
         let pv = self.find_parent(v);
         if pu != pv {
