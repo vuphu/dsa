@@ -20,14 +20,14 @@ int partition(std::vector<int> &nums, int low, int high) {
 }
 
 std::vector<int> quick_sort(std::vector<int> &nums) {
-    std::function<void(int, int)> handler = [&](int low, int high) -> void {
+    std::function<void(int, int)> sort_partition = [&](int low, int high) -> void {
         if (low < high) {
             int pivot_index = partition(nums, low, high);
-            handler(low, pivot_index - 1);
-            handler(pivot_index + 1, high);
+            sort_partition(low, pivot_index - 1);
+            sort_partition(pivot_index + 1, high);
         }
     };
-    handler(0, nums.size() - 1);
+    sort_partition(0, nums.size() - 1);
     return nums;
 }
 
