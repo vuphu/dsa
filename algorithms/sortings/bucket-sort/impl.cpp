@@ -1,16 +1,34 @@
 #include <algorithm>
-#include <iostream>
 #include <vector>
 #include <cassert>
 
-std::vector<int> bucket_sort(std::vector<int> &nums) {
-    return nums;
+std::vector<float> bucket_sort(std::vector<float> &nums) {
+    int n = nums.size();
+    std::vector<std::vector<float>> buckets(n);
+    std::vector<float> sorted_nums;
+
+    for (auto &num: nums) {
+        int index = int(num * n);
+        buckets[index].push_back(num);
+    }
+
+    for (auto &bucket: buckets) {
+        std::sort(bucket.begin(), bucket.end());
+    }
+
+    for (auto &bucket: buckets) {
+        for (auto &num: bucket) {
+            sorted_nums.push_back(num);
+        }
+    }
+
+    return sorted_nums;
 }
 
 int main() {
-    std::vector<int> nums = {4, 2, 1, 3, 5};
+    std::vector<float> nums = {0.5, 0.99, 0.75, 0.25, 0.01};
 
-    std::vector<int> sorted_nums = bucket_sort(nums);
+    std::vector<float> sorted_nums = bucket_sort(nums);
     assert(std::is_sorted(sorted_nums.begin(), sorted_nums.end()));
 
     return 0;
