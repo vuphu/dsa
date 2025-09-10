@@ -1,7 +1,4 @@
-from typing import List
-
-
-def quick_sort(nums: List[int]) -> List[int]:
+def quick_sort(nums: list[int]) -> list[int]:
     n = len(nums)
 
     if n <= 1:

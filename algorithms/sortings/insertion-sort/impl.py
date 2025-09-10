@@ -1,7 +1,4 @@
-from typing import List
-
-
-def insertion_sort(nums: List[int]) -> List[int]:
+def insertion_sort(nums: list[int]) -> list[int]:
     n = len(nums)
 
     for i in range(1, n):
@@ -13,7 +10,6 @@ def insertion_sort(nums: List[int]) -> List[int]:
         nums[j + 1] = value
 
     return nums
-
 
 
 if __name__ == "__main__":

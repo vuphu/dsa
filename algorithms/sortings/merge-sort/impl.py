@@ -1,7 +1,4 @@
-from typing import List
-
-
-def merge(fronts: List[int], backs: List[int]) -> List[int]:
+def merge(fronts: list[int], backs: list[int]) -> list[int]:
     nums = []
     i, j = 0, 0
 
@@ -19,7 +16,7 @@ def merge(fronts: List[int], backs: List[int]) -> List[int]:
     return nums
 
 
-def merge_sort(nums: List[int]) -> List[int]:
+def merge_sort(nums: list[int]) -> list[int]:
     n = len(nums)
     mid = n // 2
 

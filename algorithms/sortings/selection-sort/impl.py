@@ -1,7 +1,4 @@
-from typing import List
-
-
-def selection_sort(nums: List[int]) -> List[int]:
+def selection_sort(nums: list[int]) -> list[int]:
     n = len(nums)
 
     for i in range(n):
