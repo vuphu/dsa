@@ -1,10 +1,8 @@
-from typing import List
-
 import math
 
 
 # naive solution
-def maximum_distance(points: List[List[int]]) -> int:
+def maximum_distance(points: list[list[int]]) -> int:
     n = len(points)
     ans = -math.inf
 
@@ -17,7 +15,7 @@ def maximum_distance(points: List[List[int]]) -> int:
 
 
 # optimal solution
-def optimal_maximum_distance(points: List[List[int]]) -> int:
+def optimal_maximum_distance(points: list[list[int]]) -> int:
     min_sum = min_diff = math.inf
     max_sum = max_diff = -math.inf
 

@@ -1,3 +1,4 @@
+#include <climits>
 #include <vector>
 #include <algorithm>
 #include <cassert>
@@ -27,10 +28,10 @@ int optimal_maximum_distance(const std::vector<Point>& points) {
     int max_diff = INT_MIN;
 
     for (const auto& point : points) {
-        int s = point[0] + point[1];
+        int sum = point[0] + point[1];
         int diff = point[0] - point[1];
-        min_sum = std::min(min_sum, s);
-        max_sum = std::max(max_sum, s);
+        min_sum = std::min(min_sum, sum);
+        max_sum = std::max(max_sum, sum);
         min_diff = std::min(min_diff, diff);
         max_diff = std::max(max_diff, diff);
     }

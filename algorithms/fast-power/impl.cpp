@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cassert>
 
 int fast_power(int base, int power, int mod = 1000000007) {

@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <cassert>
 
@@ -17,7 +16,7 @@ std::vector<int> factorize(int num) {
 }
 
 std::vector<int> factorize_with_sieve(int num) {
-    auto build_spf = [](int max_num = 100000) -> std::vector<int> {
+    auto build_spf = [](int max_num) -> std::vector<int> {
         std::vector<int> spf(max_num + 1);
         for (int i = 0; i <= max_num; i++) {
             spf[i] = i;
@@ -34,7 +33,7 @@ std::vector<int> factorize_with_sieve(int num) {
         return spf;
     };
 
-    std::vector<int> spf = build_spf();
+    std::vector<int> spf = build_spf(num);
     std::vector<int> factors;
 
     while (num != 1) {

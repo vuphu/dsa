@@ -1,8 +1,5 @@
-from typing import List
-
-
-def sieve(n: int) -> List[int]:
-    primes = [True for _ in range(n + 1)]
+def sieve(n: int) -> list[int]:
+    primes = [True] * (n + 1)
     p = 2
     while p * p <= n:
         if primes[p]:
@@ -13,6 +10,6 @@ def sieve(n: int) -> List[int]:
 
 
 if __name__ == "__main__":
-    nums = sieve(1000)
+    primes = sieve(1000)
 
-    assert len(nums) == 168
+    assert len(primes) == 168

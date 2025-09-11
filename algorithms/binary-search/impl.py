@@ -1,8 +1,5 @@
-from typing import List
-
-
 # nums is already sorted
-def binary_search(nums: List[int], target: int) -> bool:
+def binary_search(nums: list[int], target: int) -> bool:
     left, right = 0, len(nums) - 1
 
     while left <= right:
