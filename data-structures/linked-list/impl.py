@@ -1,13 +1,13 @@
-from typing import List, Optional
+from __future__ import annotations
 
 
 class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
+    def __init__(self, value: int = 0, next: ListNode | None = None):
+        self.value = value
         self.next = next
 
 
-def build(nums: List[int]) -> Optional[ListNode]:
+def to_list_node(nums: list[int]) -> ListNode | None:
     before_head = ListNode(-1)
     node = before_head
     for num in nums:
@@ -16,44 +16,45 @@ def build(nums: List[int]) -> Optional[ListNode]:
     return before_head.next
 
 
-def to_list(head: Optional[ListNode]) -> List[int]:
+def to_list(head: ListNode | None) -> list[int]:
     node = head
     nums = []
     while node:
-        nums.append(node.val)
+        nums.append(node.value)
         node = node.next
     return nums
 
 
-def reverse(head: Optional[ListNode]) -> Optional[ListNode]:
+def reverse(head: ListNode | None) -> ListNode | None:
     if not head or not head.next:
         return head
-    
+
     next_node = head.next
     reversed_head = reverse(next_node)
     head.next = None
     next_node.next = head
-    
+
     return reversed_head
 
 
-def reverse_without_recursion(head: Optional[ListNode]) -> Optional[ListNode]:
+def reverse_without_recursion(head: ListNode | None) -> ListNode | None:
     node = None
-    
+
     while head:
         next_node = head.next
         head.next = node
         node = head
         head = next_node
-        
+
     return node
+
 
 if __name__ == "__main__":
     nums = [1, 2, 3, 4, 5]
-    head = build(nums)
+    head = to_list_node(nums)
 
     reversed_head = reverse(head)
     assert to_list(reversed_head) == nums[::-1]
-    
+
     reversed_reversed_head = reverse_without_recursion(reversed_head)
     assert to_list(reversed_reversed_head) == nums
