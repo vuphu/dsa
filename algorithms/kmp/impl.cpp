@@ -3,7 +3,7 @@
 #include <string>
 #include <cassert>
 
-std::vector<int> compute_prefix_function(const std::string &pattern) {
+std::vector<int> compute_prefix(const std::string &pattern) {
     int m = pattern.length();
     std::vector<int> prefix(m, 0);
 
@@ -23,7 +23,7 @@ std::vector<int> compute_prefix_function(const std::string &pattern) {
 
 std::vector<int> kmp_search(const std::string &text, const std::string &pattern) {
     int m = pattern.length(), n = text.length();
-    std::vector<int> prefix = compute_prefix_function(pattern);
+    std::vector<int> prefix = compute_prefix(pattern);
     std::vector<int> match_indices;
 
     int j = 0;

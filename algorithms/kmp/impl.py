@@ -1,7 +1,4 @@
-from typing import List
-
-
-def compute_prefix_function(pattern: str) -> List[int]:
+def compute_prefix(pattern: str) -> list[int]:
     m = len(pattern)
     prefix = [0] * m
 
@@ -16,9 +13,9 @@ def compute_prefix_function(pattern: str) -> List[int]:
     return prefix
 
 
-def kmp_search(text: str, pattern: str) -> List[int]:
+def kmp_search(text: str, pattern: str) -> list[int]:
     m, n = len(pattern), len(text)
-    prefix = compute_prefix_function(pattern)
+    prefix = compute_prefix(pattern)
     match_indices = []
 
     j = 0
