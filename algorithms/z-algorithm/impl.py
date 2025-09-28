@@ -1,8 +1,6 @@
-from typing import List
-
 # Ref: https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/
 
-def compute_z_array(s: str):
+def compute_z_array(s: str) -> list[int]:
     length = len(s)
     z_array = [0] * length
     left, right = 0, 0
@@ -28,13 +26,13 @@ def compute_z_array(s: str):
     return z_array
 
 
-def z_algorithm_search(text: str, pattern: str) -> List[int]:
+def z_algorithm_search(text: str, pattern: str) -> list[int]:
     concatenated = pattern + '#' + text
     z_array = compute_z_array(concatenated)
     pattern_length = len(pattern)
-
     match_indices = []
-    for i in range(len(pattern) + 1, len(concatenated)):
+
+    for i in range(pattern_length + 1, len(concatenated)):
         if z_array[i] == pattern_length:
             match_indices.append(i - len(pattern) - 1)
 
@@ -42,9 +40,9 @@ def z_algorithm_search(text: str, pattern: str) -> List[int]:
 
 
 if __name__ == "__main__":
-    text = "Using the KMP algorithm to search for text"
+    text = "Using the Z algorithm to search for text"
     pattern = "search"
-    assert z_algorithm_search(text, pattern) == [27]
+    assert z_algorithm_search(text, pattern) == [25]
 
     text = "AAAAA"
     pattern = "AA"

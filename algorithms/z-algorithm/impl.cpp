@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <string>
 #include <cassert>
@@ -40,8 +39,8 @@ std::vector<int> z_algorithm_search(const std::string& text, const std::string& 
     std::string concatenated = pattern + '#' + text;
     std::vector<int> z_array = compute_z_array(concatenated);
     int pattern_length = pattern.length();
-
     std::vector<int> match_indices;
+
     for (int i = pattern_length + 1; i < concatenated.length(); ++i) {
         if (z_array[i] == pattern_length) {
             match_indices.push_back(i - pattern_length - 1);
@@ -52,9 +51,9 @@ std::vector<int> z_algorithm_search(const std::string& text, const std::string& 
 }
 
 int main() {
-    std::string text = "Using the KMP algorithm to search for text";
+    std::string text = "Using the Z algorithm to search for text";
     std::string pattern = "search";
-    assert(z_algorithm_search(text, pattern) == std::vector<int>{27});
+    assert(z_algorithm_search(text, pattern) == std::vector<int>{25});
 
     text = "AAAAA";
     pattern = "AA";
