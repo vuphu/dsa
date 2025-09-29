@@ -1,8 +1,7 @@
 import collections
-from typing import List
 
 
-def topological_sort(n: int, edges: List[List[int]]) -> List[int]:
+def topological_sort(n: int, edges: list[list[int]]) -> list[int]:
     graph = collections.defaultdict(list)
     visited = [False] * n
     stack = []
@@ -10,7 +9,7 @@ def topological_sort(n: int, edges: List[List[int]]) -> List[int]:
     for u, v in edges:
         graph[u].append(v)
 
-    def dfs(node):
+    def dfs(node) -> None:
         visited[node] = True
         for neighbor in graph[node]:
             if not visited[neighbor]:
