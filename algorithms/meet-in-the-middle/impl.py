@@ -1,22 +1,20 @@
 import collections
-from typing import List
 
-
-def find_subset_sums(nums: List[int]) -> List[int]:
-    ans = []
+def find_subset_sums(nums: list[int]) -> list[int]:
+    sums = []
 
     def attempt(i: int, s: int) -> None:
         if i == len(nums):
-            ans.append(s)
+            sums.append(s)
             return
         attempt(i + 1, s)
         attempt(i + 1, s + nums[i])
 
     attempt(0, 0)
-    return ans
+    return sums
 
 
-def count_target_subsets(nums: List[int], target: int) -> int:
+def count_target_subsets(nums: list[int], target: int) -> int:
     n = len(nums)
     front_sums = find_subset_sums(nums[:n // 2])
     back_sums = find_subset_sums(nums[n // 2:])
