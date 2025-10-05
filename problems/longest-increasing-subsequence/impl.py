@@ -1,8 +1,6 @@
 import bisect
-from typing import List
 
-
-def longest_subsequence(nums: List[int]) -> int:
+def longest_subsequence(nums: list[int]) -> int:
     n = len(nums)
     dp = [0] * n
 
@@ -17,7 +15,7 @@ def longest_subsequence(nums: List[int]) -> int:
     return max(dp)
 
 
-def fast_longest_subsequence(nums: List[int]) -> int:
+def fast_longest_subsequence(nums: list[int]) -> int:
     stack = []
     for num in nums:
         if not stack or stack[-1] < num:
