@@ -1,18 +1,11 @@
 from copy import deepcopy
-from typing import List
+
+type Board = list[list[bool]]
 
 
-def print_board(board: List[List[bool]]):
-    for row in board:
-        for cell in row:
-            print("Q" if cell else '.', end=' ')
-        print()
-    print()
-
-
-def solve_n_queens(n: int) -> List[List[List[bool]]]:
+def solve_n_queens(n: int) -> list[Board]:
     board = [[False] * n for _ in range(n)]
-    ans = []
+    solutions = []
 
     def has_queen(r: int, c: int) -> bool:
         if not (0 <= r < n) or not (0 <= c < n):
@@ -28,7 +21,7 @@ def solve_n_queens(n: int) -> List[List[List[bool]]]:
 
     def attempt(r: int) -> None:
         if r == n:
-            ans.append(deepcopy(board))
+            solutions.append(deepcopy(board))
             return
         for c in range(n):
             if is_safe(r, c):
@@ -37,10 +30,9 @@ def solve_n_queens(n: int) -> List[List[List[bool]]]:
                 board[r][c] = False
 
     attempt(0)
-    return ans
+    return solutions
 
 
 if __name__ == "__main__":
-    boards = solve_n_queens(4)
-    for board in boards:
-        print_board(board)
+    solutions = solve_n_queens(4)
+    assert len(solutions) == 2

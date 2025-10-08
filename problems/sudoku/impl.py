@@ -1,18 +1,13 @@
 from math import sqrt
-from typing import List
+
+type Board = list[list[int]]
 
 
-def print_board(board: List[List[int]]):
-    for row in board:
-        print(row)
-    print()
-
-
-def solve_sudoku(board: List[List[int]]) -> None:
+def solve_sudoku(board: Board) -> None:
     n = len(board)
     n_box = int(sqrt(n))
 
-    def get_start_box(r: int, c: int) -> List[int]:
+    def get_start_box(r: int, c: int) -> list[int]:
         return [r // n_box * n_box, c // n_box * n_box]
 
     def is_safe(r: int, c: int, num: int) -> bool:
@@ -47,7 +42,12 @@ def solve_sudoku(board: List[List[int]]) -> None:
     attempt()
 
 
+def has_correct_values(values: list[int]) -> bool:
+    return sorted(values) == list(range(1, len(values) + 1))
+
+
 if __name__ == "__main__":
+    n = 9
     board = [
         [5, 3, 0, 0, 7, 0, 0, 0, 0],
         [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -60,6 +60,8 @@ if __name__ == "__main__":
         [0, 0, 0, 0, 8, 0, 0, 7, 9]
     ]
 
-    print_board(board)
     solve_sudoku(board)
-    print_board(board)
+
+    assert has_correct_values(board[0]) == True
+    assert has_correct_values([board[i][0] for i in range(n)]) == True
+    assert has_correct_values([board[i][j] for i in range(int(sqrt(n))) for j in range(int(sqrt(n)))]) == True

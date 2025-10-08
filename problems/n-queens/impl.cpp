@@ -1,22 +1,12 @@
-#include <iostream>
 #include <vector>
 #include <functional>
+#include <cassert>
 
 typedef std::vector<std::vector<bool>> Board;
 
-void print_board(const Board &board) {
-    for (const auto &row : board) {
-        for (auto cell : row) {
-            std::cout << (cell ? "Q" : ".") << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-}
-
 std::vector<Board> solve_n_queens(int n) {
     Board board(n, std::vector<bool>(n, false));
-    std::vector<Board> ans;
+    std::vector<Board> solutions;
 
     auto has_queen = [&](int r, int c) -> bool {
         if (r < 0 || r >= n || c < 0 || c >= n) {
@@ -37,7 +27,7 @@ std::vector<Board> solve_n_queens(int n) {
 
     std::function<void(int)> attempt = [&](int row) -> void {
         if (row == n) {
-            ans.push_back(board);
+            solutions.push_back(board);
             return;
         }
         for (int col = 0; col < n; col++) {
@@ -50,14 +40,11 @@ std::vector<Board> solve_n_queens(int n) {
     };
 
     attempt(0);
-    return ans;
+    return solutions;
 }
 
 int main() {
-    int n = 4;
-    auto boards = solve_n_queens(n);
-    for (const auto &board : boards) {
-        print_board(board);
-    }
+    std::vector<Board> solutions = solve_n_queens(4);
+    assert(solutions.size() == 2);
     return 0;
 }

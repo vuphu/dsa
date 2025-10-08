@@ -1,20 +1,9 @@
-#include <iostream>
-#include <utility>
 #include <vector>
-#include <cmath>
 #include <functional>
+#include <cassert>
+#include <algorithm>
 
 typedef std::vector<std::vector<int>> Board;
-
-void print_board(const Board &board) {
-    for (const auto &row : board) {
-        for (int num : row) {
-            std::cout << num << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-}
 
 void solve_sudoku(Board &board) {
     int n = board.size();
@@ -67,8 +56,20 @@ void solve_sudoku(Board &board) {
     attempt();
 }
 
+bool has_correct_values(std::vector<int> &values) {
+    std::vector<int> sorted_values = values;
+    sort(sorted_values.begin(), sorted_values.end());
+    for (int i = 0; i < sorted_values.size(); i++) {
+        if (sorted_values[i] != i + 1) {
+            return false;
+        }
+    }
+    return true;
+};
+
 
 int main() {
+    int n = 9;
     Board board = {
         {5, 3, 0, 0, 7, 0, 0, 0, 0},
         {6, 0, 0, 1, 9, 5, 0, 0, 0},
@@ -78,11 +79,22 @@ int main() {
         {7, 0, 0, 0, 2, 0, 0, 0, 6},
         {0, 6, 0, 0, 0, 0, 2, 8, 0},
         {0, 0, 0, 4, 1, 9, 0, 0, 5},
-        {0, 0, 0, 0, 8, 0, 0, 7, 9}};
+        {0, 0, 0, 0, 8, 0, 0, 7, 9},
+    };
 
-    print_board(board);
     solve_sudoku(board);
-    print_board(board);
+
+    std::vector<int> row, column, box;
+    for (int i = 0; i < n; i++) {
+        int n_box = (int)sqrt(n);
+        row.push_back(board[0][i]);
+        column.push_back(board[i][0]);
+        box.push_back(board[i / n_box][i % n_box]);
+    }
+
+    assert(has_correct_values(row) == true);
+    assert(has_correct_values(column) == true);
+    assert(has_correct_values(box) == true);
 
     return 0;
 }
