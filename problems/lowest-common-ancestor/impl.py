@@ -1,16 +1,15 @@
-from os import access
-from typing import Optional
+from __future__ import annotations
 
 
 class TreeNode:
-    def __init__(self, value: int, left: Optional['TreeNode'] = None, right: Optional['TreeNode'] = None):
+    def __init__(self, value: int, left: TreeNode | None = None, right: TreeNode | None = None):
         self.value = value
         self.left = left
         self.right = right
 
 
 def lowest_common_ancestor(root: TreeNode, first_value: int, second_value: int) -> TreeNode:
-    def dfs(node: Optional[TreeNode]) -> Optional[TreeNode]:
+    def dfs(node: TreeNode | None) -> TreeNode | None:
         if not node:
             return None
 

@@ -1,7 +1,4 @@
 #include <cassert>
-#include <iostream>
-#include <memory>
-#include <cassert>
 
 class TreeNode {
   public:
