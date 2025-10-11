@@ -1,29 +1,29 @@
-from typing import List
-
-
-def cross_product(point1: List[int], point2: List[int], point3: List[int]) -> int:
+def cross_product(point1: list[int], point2: list[int], point3: list[int]) -> int:
     return (point2[0] - point1[0]) * (point3[1] - point1[1]) - (point3[0] - point1[0]) * (point2[1] - point1[1])
 
 
-def convex_hull(points: List[List[int]]) -> List[List[int]]:
+def convex_hull(points: list[list[int]]) -> list[list[int]]:
     n = len(points)
 
+    if n <= 3:
+        return points
+
     points = sorted(points)
-    hull = [points[0]]
+    hull = []
 
-    for i in range(1, n):
-        while len(hull) >= 2 and cross_product(hull[-2], hull[-1], points[i]) > 0:
+    for point in points:
+        while len(hull) >= 2 and cross_product(hull[-2], hull[-1], point) > 0:
             hull.pop()
-        hull.append(points[i])
+        hull.append(point)
 
+    hull_size = len(hull)
     for i in range(n - 2, -1, -1):
-        while len(hull) >= 2 and cross_product(hull[-2], hull[-1], points[i]) > 0:
+        p = points[i]
+        while len(hull) > hull_size and cross_product(hull[-2], hull[-1], p) > 0:
             hull.pop()
-        hull.append(points[i])
+        hull.append(p)
 
-    if n > 1:
-        hull.pop()
-
+    hull.pop()
     return hull
 
 
