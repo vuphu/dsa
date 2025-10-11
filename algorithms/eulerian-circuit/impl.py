@@ -1,8 +1,7 @@
 import collections
-from typing import List
 
 
-def build_graph(edges: List[List[int]]) -> dict:
+def build_graph(edges: list[list[int]]) -> dict[int, list[int]]:
     graph = collections.defaultdict(list)
     for u, v in edges:
         graph[u].append(v)
@@ -10,14 +9,14 @@ def build_graph(edges: List[List[int]]) -> dict:
     return graph
 
 
-def find_eulerian_circuit(n: int, edges: List[List[int]]):
+def find_eulerian_circuit(edges: list[list[int]]) -> list[int]:
     graph = build_graph(edges)
 
     for vertex in graph:
         if len(graph[vertex]) % 2 != 0:
-            return None
+            return []
 
-    def traverse(node: int, path: List[int]):
+    def traverse(node: int, path: list[int]) -> None:
         stack = [node]
         while stack:
             u = stack[-1]
@@ -28,13 +27,13 @@ def find_eulerian_circuit(n: int, edges: List[List[int]]):
             else:
                 path.append(stack.pop())
 
-    start_node, path = next(iter(graph)), []
+    start_node, path = min(graph.keys()), []
     traverse(start_node, path)
 
-    return path[::-1] if len(path) == len(edges) + 1 else None
+    return path[::-1] if len(path) == len(edges) + 1 else []
 
 
 if __name__ == "__main__":
     edges = [[0, 1], [1, 2], [2, 0]]
-    circuit = find_eulerian_circuit(3, edges)
+    circuit = find_eulerian_circuit(edges)
     assert circuit == [0, 2, 1, 0]
