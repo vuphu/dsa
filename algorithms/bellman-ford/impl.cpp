@@ -1,5 +1,6 @@
 #include <vector>
 #include <cassert>
+#include <climits>
 
 std::vector<int> bellman_ford(int n, std::vector<std::vector<int>> edges, int node) {
     std::vector<int> dist(n, INT_MAX);
