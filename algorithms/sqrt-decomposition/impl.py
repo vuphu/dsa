@@ -1,15 +1,13 @@
-from typing import List
-
+import collections
 import math
-from collections import defaultdict
 
 
 class SqrtDecomposition:
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums: list[int]):
         n = len(nums)
         self.nums = nums
         self.block_size = int(math.sqrt(n))
-        self.blocks = [defaultdict(int) for _ in range((n + self.block_size - 1) // self.block_size)]
+        self.blocks = [collections.defaultdict(int) for _ in range((n + self.block_size - 1) // self.block_size)]
 
         for i in range(n):
             block_index = i // self.block_size
