@@ -16,6 +16,7 @@ std::vector<int> factorize(int num) {
 }
 
 std::vector<int> factorize_with_sieve(int num) {
+    // spf stands for smallest prime factors
     auto build_spf = [](int max_num) -> std::vector<int> {
         std::vector<int> spf(max_num + 1);
         for (int i = 0; i <= max_num; i++) {
@@ -47,6 +48,9 @@ std::vector<int> factorize_with_sieve(int num) {
 int main() {
     assert(factorize(120) == (std::vector<int>{2, 2, 2, 3, 5}));
     assert(factorize_with_sieve(120) == (std::vector<int>{2, 2, 2, 3, 5}));
+
+    assert(factorize(5) == (std::vector<int>{5}));
+    assert(factorize_with_sieve(5) == (std::vector<int>{5}));
 
     return 0;
 }

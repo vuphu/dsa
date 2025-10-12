@@ -23,7 +23,7 @@ std::vector<int> find_eulerian_circuit(const std::vector<std::pair<int, int>> &e
             return std::vector<int>();
     }
 
-    std::function<void(int, std::vector<int> &)> traverse = [&](int node, std::vector<int> &path) -> void {
+    auto traverse = [&](int node, std::vector<int> &path) -> void {
         std::vector<int> stack = {node};
         while (!stack.empty()) {
             int u = stack.back();

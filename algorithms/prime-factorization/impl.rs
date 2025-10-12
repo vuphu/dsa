@@ -8,6 +8,10 @@ fn factorize(mut num: i32) -> Vec<i32> {
         }
     }
 
+    if num > 1 {
+        factors.push(num);
+    }
+
     factors
 }
 
@@ -40,4 +44,7 @@ fn factorize_with_sieve(mut num: i32) -> Vec<i32> {
 fn main() {
     assert!(factorize(120) == vec![2, 2, 2, 3, 5]);
     assert!(factorize_with_sieve(120) == vec![2, 2, 2, 3, 5]);
+
+    assert!(factorize(5) == vec![5]);
+    assert!(factorize_with_sieve(5) == vec![5]);
 }

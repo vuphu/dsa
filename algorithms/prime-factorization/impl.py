@@ -7,6 +7,8 @@ def factorize(num: int) -> list[int]:
         while num % i == 0:
             factors.append(i)
             num = num // i
+    if num > 1:
+        factors.append(num)
     return factors
 
 
@@ -33,3 +35,6 @@ def factorize_with_sieve(num: int) -> list[int]:
 if __name__ == "__main__":
     assert factorize(120) == [2, 2, 2, 3, 5]
     assert factorize_with_sieve(120) == [2, 2, 2, 3, 5]
+
+    assert factorize(5) == [5]
+    assert factorize_with_sieve(5) == [5]
