@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <cassert>
 
@@ -72,4 +71,5 @@ int main() {
   assert(postorder(root) == (std::vector<int>{4, 5, 2, 6, 3, 1}));
 
   delete root;
+  return 0;
 }
