@@ -1,7 +1,6 @@
 #include <functional>
 #include <vector>
 #include <map>
-#include <algorithm>
 #include <cassert>
 
 std::map<int, std::vector<int>> build_graph(const std::vector<std::pair<int, int>> &edges) {

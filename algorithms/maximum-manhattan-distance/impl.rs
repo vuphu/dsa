@@ -1,5 +1,6 @@
 use std::cmp::{max, min};
 
+// naive solution
 fn maximum_distance(points: &Vec<Vec<i32>>) -> i32 {
     let n = points.len();
     let mut ans = i32::MIN;

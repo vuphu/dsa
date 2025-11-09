@@ -1,5 +1,4 @@
 #include <vector>
-#include <algorithm>
 #include <cassert>
 
 long long cross_product(const std::vector<int> &point1, const std::vector<int> &point2, const std::vector<int> &point3) {

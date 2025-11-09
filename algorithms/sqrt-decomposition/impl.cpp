@@ -1,7 +1,6 @@
 #include <vector>
 #include <unordered_map>
 #include <cassert>
-#include <algorithm>
 
 class SqrtDecomposition {
   public:
